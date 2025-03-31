@@ -1,0 +1,194 @@
+%% CATEGORIES %%
+%% Using an optional argument other than c in \header allow a horizontal spanning of categories
+
+\listgadd\categories{}
+
+\newcommand{\newCategory}[1]{\startcontents[#1]\stopcontents[#1]}
+\newcommand{\printCategory}[2]{
+    \dualcol{
+        \printcontents[#1]{l}{1}{
+            \renewcommand{\baselinestretch}{0.75}\normalsize
+            \let\section\oldsection
+            \pdfbookmark{Contents}{Contents}
+            \section*{#2}\setcounter{tocdepth}{1}
+            \renewcommand{\baselinestretch}{1.0}\normalsize
+        }
+    }
+}
+
+
+\newcommand{\splitCategories}[1]{
+    \ifthenelse{\equal{\arabic{valuex}}{2}}{
+        \setcounter{valuex}{0}
+        \stepcounter{valuey}
+    }{}
+    \ifthenelse{\equal{\arabic{valuey}}{0}}{
+        \ifthenelse{\equal{\arabic{valuex}}{0}}{
+            \listgadd{\rowOneColumnOne}{#1}
+        }{
+            \listgadd{\rowOneColumnTwo}{#1}
+        }
+    }{
+        \ifthenelse{\equal{\arabic{valuex}}{0}}{
+            \listgadd{\rowTwoColumnOne}{#1}
+        }{
+            \listgadd{\rowTwoColumnTwo}{#1}
+        }
+    }
+    \stepcounter{valuex}
+    \stepcounter{lengh}
+}%
+
+\newcommand{\removeCategories}[1]{
+    \ifthenelse{\equal{\arabic{valuex}}{2}}{
+        \setcounter{valuex}{0}
+        \stepcounter{valuey}
+    }{}
+    \ifthenelse{\equal{\arabic{valuey}}{0}}{
+        \ifthenelse{\equal{\arabic{valuex}}{0}}{
+            \listgremove{\rowOneColumnOne}{#1}
+        }{
+            \listgremove{\rowOneColumnTwo}{#1}
+        }
+    }{
+        \ifthenelse{\equal{\arabic{valuex}}{0}}{
+            \listgremove{\rowTwoColumnOne}{#1}
+        }{
+            \listgremove{\rowTwoColumnTwo}{#1}
+        }
+    }
+    \stepcounter{valuex}
+    \stepcounter{lengh}
+}%
+
+\newcounter{lengh}
+\newcounter{valuex}
+\newcounter{valuey}
+\newcommand{\insertCategories}[1]{
+    \forcsvlist{\listgadd{\rowOneColumnOne}}{}
+    \forcsvlist{\listgadd{\rowOneColumnTwo}}{}
+    \forcsvlist{\listgadd{\rowTwoColumnOne}}{}
+    \forcsvlist{\listgadd{\rowTwoColumnTwo}}{}
+    \forlistloop{\splitCategories}{\categories}
+    \setcounter{valuex}{0}
+    \setcounter{valuey}{0}
+    \parseCategories{\rowOneColumnOne}{\rowOneColumnTwo}{\rowTwoColumnOne}{\rowTwoColumnTwo}{#1}
+    \forlistloop{\removeCategories}{\categories}
+    \setcounter{valuex}{0}
+    \setcounter{valuey}{0}
+    \setcounter{lengh}{0}
+}
+
+\newcommand{\showCategory}[1]{
+    \hyperref[sec:#1]{\includegraphics[scale=0.3]{images/categories/#1.png}}
+}
+
+\newcommand{\showCategories}[2]{
+    \ifthenelse{\equal{#1}{c}}{
+        \begin{tabular}{cc}
+            #2
+        \end{tabular}
+    }{
+        \ifthenelse{\equal{#1}{v}}{
+            \begin{tabular}{c}
+                #2
+            \end{tabular}
+        }{
+            \begin{tabular}{cccc}
+                #2
+            \end{tabular}
+        }
+    }
+}
+
+\newcommand{\showCategoriesOne}[1]{
+    \showCategories{#1}{
+        & \forlistloop{\showCategory}{\rowOneColumnOne}
+    }
+}
+
+\newcommand{\showCategoriesTwo}[1]{
+    \ifthenelse{\equal{#1}{v}}{
+        \showCategories{#1}{
+            \forlistloop{\showCategory}{\rowOneColumnOne} \vspace{0.3cm}\\
+            \forlistloop{\showCategory}{\rowOneColumnTwo} \vspace{0.3cm}\\
+        }
+    }{
+        \showCategories{#1}{
+        \forlistloop{\showCategory}{\rowOneColumnOne} &
+        \forlistloop{\showCategory}{\rowOneColumnTwo}
+        }
+    }
+}
+
+\newcommand{\showCategoriesThree}[1]{
+    \ifthenelse{\equal{#1}{c}}{
+        \showCategories{#1}{
+            \forlistloop{\showCategory}{\rowOneColumnTwo} &
+            \forlistloop{\showCategory}{\rowOneColumnOne} \vspace{0.3cm}\\
+            & \forlistloop{\showCategory}{\rowTwoColumnOne}
+        }
+    }{
+        \ifthenelse{\equal{#1}{v}}{
+            \showCategories{#1}{
+                \forlistloop{\showCategory}{\rowOneColumnTwo} \vspace{0.3cm}\\
+                \forlistloop{\showCategory}{\rowOneColumnOne} \vspace{0.3cm}\\
+                \forlistloop{\showCategory}{\rowTwoColumnOne} \vspace{0.3cm}\\
+            }
+        }{
+            \showCategories{#1}{
+                & \forlistloop{\showCategory}{\rowOneColumnTwo} &
+                \forlistloop{\showCategory}{\rowOneColumnOne} &
+                \forlistloop{\showCategory}{\rowTwoColumnOne}
+            }
+        }
+    }
+}
+
+
+\newcommand{\showCategoriesFour}[1]{
+    \ifthenelse{\equal{#1}{c}}{
+        \showCategories{#1}{
+            \forlistloop{\showCategory}{\rowOneColumnTwo} &
+            \forlistloop{\showCategory}{\rowOneColumnOne} \vspace{0.3cm}\\
+            \forlistloop{\showCategory}{\rowTwoColumnTwo} &
+            \forlistloop{\showCategory}{\rowTwoColumnOne}
+        }
+    }{
+        \ifthenelse{\equal{#1}{v}}{
+            \showCategories{#1}{
+                \forlistloop{\showCategory}{\rowOneColumnTwo} \vspace{0.3cm}\\
+                \forlistloop{\showCategory}{\rowOneColumnOne} \vspace{0.3cm}\\
+                \forlistloop{\showCategory}{\rowTwoColumnTwo} \vspace{0.3cm}\\
+                \forlistloop{\showCategory}{\rowTwoColumnOne} \vspace{0.3cm}\\
+            }
+        }{
+            \showCategories{#1}{
+                \forlistloop{\showCategory}{\rowOneColumnTwo} &
+                \forlistloop{\showCategory}{\rowOneColumnOne} &
+                \forlistloop{\showCategory}{\rowTwoColumnTwo} &
+                \forlistloop{\showCategory}{\rowTwoColumnOne}
+            }
+        }
+    }
+}
+
+\newcommand{\parseCategories}[5]{
+    \ifthenelse{\equal{\arabic{lengh}}{0}}{}{
+        \ifthenelse{\equal{\arabic{lengh}}{1}}{
+            \showCategoriesOne{#5}
+        }{
+            \ifthenelse{\equal{\arabic{lengh}}{2}}{
+                \showCategoriesTwo{#5}
+            }{
+                \ifthenelse{\equal{\arabic{lengh}}{3}}{
+                    \showCategoriesThree{#5}
+                }{
+                    \ifthenelse{\equal{\arabic{lengh}}{4}}{
+                        \showCategoriesFour{#5}
+                    }{}
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,86 @@
+\input{texfiles/categories}
+\input{texfiles/general_chant}
+\input{texfiles/colors}
+
+%% CHANTS %%
+
+\newcommand{\insertChant}[3]{
+    \tagged{#2}{
+        \ifthenelse{\equal{9}{\value{color}}}{
+            \setcounter{color}{0}
+        }{
+            \stepcounter{color}
+        }
+        \tagged{colored}{
+            \sectionfont{\color{color\arabic{color}!60!black}} 
+            \subsectionfont{\fontsize{8}{10}\bfseries\itshape\color{color\arabic{color}!80!white}} 
+            \renewcommand\LettrineFontHook{\color{color\arabic{color}}}%
+        }
+        \untagged{colored}{
+            \sectionfont{\color{black}} 
+            \subsectionfont{\fontsize{8}{10}\bfseries\itshape\color{black}} 
+            \renewcommand\LettrineFontHook{\color{black}}%
+        }
+        \ifthenelse{\equal{#3}{}}{
+            \input{chants/#1.tex}
+            \tagged{partition}{
+                \IfFileExists{partitions/pdf/#1.pdf}{
+                    \includepdf[pages={1-}]{partitions/pdf/#1.pdf}
+                }{}
+            }
+        }{
+            \foreach \i in {#3} {
+                \resumecontents[\i]
+            }
+            \forcsvlist{\listgadd{\categories}}{#3}
+            \input{chants/#1.tex}
+            \tagged{partition}{
+                \IfFileExists{partitions/pdf/#1.pdf}{
+                    \includepdf[pages={1-}]{partitions/pdf/#1.pdf}
+                }{}
+            }
+            \foreach \i in {#3} {
+                \stopcontents[\i]
+            }
+            \forcsvlist{\listgremove{\categories}}{#3}
+        }
+    }
+}
+
+\newcommand{\insertChantWithColor}[4]{
+    \tagged{#2}{
+        \tagged{colored}{
+            \sectionfont{\color{#3!60!black}} 
+            \subsectionfont{\fontsize{8}{10}\bfseries\itshape\color{#3!80!white}} 
+            \renewcommand\LettrineFontHook{\color{#3}}%
+        }
+        \untagged{colored}{
+            \sectionfont{\color{black}} 
+            \subsectionfont{\fontsize{8}{10}\bfseries\itshape\color{black}} 
+            \renewcommand\LettrineFontHook{\color{black}}%
+        }
+        \ifthenelse{\equal{#4}{}}{
+            \input{chants/#1.tex}
+            \tagged{partition}{
+                \IfFileExists{partitions/pdf/#1.pdf}{
+                    \includepdf[pages={1-}]{partitions/pdf/#1.pdf}
+                }{}
+            }
+        }{
+            \foreach \i in {#4} {
+                \resumecontents[\i]
+            }
+            \forcsvlist{\listgadd{\categories}}{#4}
+            \input{chants/#1.tex}
+            \tagged{partition}{
+                \IfFileExists{partitions/pdf/#1.pdf}{
+                    \includepdf[pages={1-}]{partitions/pdf/#1.pdf}
+                }{}
+            }
+            \foreach \i in {#4} {
+                \stopcontents[\i]
+            }
+            \forcsvlist{\listgremove{\categories}}{#4}
+        }
+    }
+}

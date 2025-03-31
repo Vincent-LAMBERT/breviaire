@@ -1,0 +1,250 @@
+
+%% GENERAL %%
+\newcommand{\enluminure}[3]{\lettrine[lines=#1]{\usefont{U}{Romantik}{xl}{n} #2}{#3}}
+
+\setlength\parindent{0pt}
+
+\newcommand{\breakpage}{\newpage}
+
+\newcommand{\newSection}[1]{
+  \thispagestyle{empty}
+  \vspace*{200pt}\par
+  {\Huge \centering \bfseries #1\par\nobreak
+  \vskip 100pt}
+  \breakpage
+}
+
+\newcommand{\dualcol}[1]{
+    \begin{multicols}{2}
+        #1
+    \end{multicols}
+}
+
+
+\newcommand{\blackline}[0]{
+    \vspace{1cm}
+    \hrule
+    \vspace{1cm}
+}
+
+\newcommand{\bissimple}[1][]{\} bis}
+
+\newcommand{\bisdouble}[2]{
+    % The spaces are NECESSARY DON'T ERASE THEM
+
+    \ensuremaths{
+        \left.
+        \hspace{-0.25cm}
+        \begin{tabular}{l}
+        #1
+        \\#2
+        \end{tabular}\right\rbrace
+    } \textrm{bis}
+    
+    % The spaces are NECESSARY DON'T ERASE THEM
+}
+
+\newcommand{\bisdoublespace}[2]{
+    % The spaces are NECESSARY DON'T ERASE THEM
+
+    \ensuremaths{
+        \left.
+        \hspace{-0.25cm}
+        \begin{tabular}{l}
+        #1
+        \\#2
+        \end{tabular}\right\rbrace
+    } \textrm{bis}\\
+    \vspace{0.2cm}
+    
+    % The spaces are NECESSARY DON'T ERASE THEM
+}
+
+\newcommand{\bistriple}[3]{
+    % The spaces are NECESSARY DON'T ERASE THEM
+
+    \ensuremaths{
+        \left.
+        \hspace{-0.25cm}
+        \begin{tabular}{l}
+        #1
+        \\#2
+        \\#3
+        \end{tabular}\right\rbrace
+    } \textrm{bis}
+    
+    % The spaces are NECESSARY DON'T ERASE THEM
+}
+
+\newcommand{\bistriplespace}[3]{
+    % The spaces are NECESSARY DON'T ERASE THEM
+
+    \ensuremaths{
+        \left.
+        \hspace{-0.25cm}
+        \begin{tabular}{l}
+        #1
+        \\#2
+        \\#3
+        \end{tabular}\right\rbrace
+    } \textrm{bis}\\
+    \vspace{0.2cm}
+    
+    % The spaces are NECESSARY DON'T ERASE THEM
+}
+
+\newcommand{\bisquadruple}[4]{
+    % The spaces are NECESSARY DON'T ERASE THEM
+
+    \ensuremaths{
+        \left.
+        \hspace{-0.25cm}
+        \begin{tabular}{l}
+        #1
+        \\#2
+        \\#3
+        \\#4
+        \end{tabular}\right\rbrace
+    } \textrm{bis}
+    
+    % The spaces are NECESSARY DON'T ERASE THEM
+}
+
+\newcommand{\bisquadruplespace}[4]{
+    % The spaces are NECESSARY DON'T ERASE THEM
+
+    \ensuremaths{
+        \left.
+        \hspace{-0.25cm}
+        \begin{tabular}{l}
+        #1
+        \\#2
+        \\#3
+        \\#4
+        \end{tabular}\right\rbrace
+    } \textrm{bis}\\
+    \vspace{0.2cm}
+    
+    % The spaces are NECESSARY DON'T ERASE THEM
+}
+
+\newcommand{\bisquintuple}[5]{
+    % The spaces are NECESSARY DON'T ERASE THEM
+
+    \ensuremaths{
+        \left.
+        \hspace{-0.25cm}
+        \begin{tabular}{l}
+        #1
+        \\#2
+        \\#3
+        \\#4
+        \\#5
+        \end{tabular}\right\rbrace
+    } \textrm{bis}
+    
+    % The spaces are NECESSARY DON'T ERASE THEM
+}
+
+\newcommand{\bisquintuplespace}[5]{
+    % The spaces are NECESSARY DON'T ERASE THEM
+
+    \ensuremaths{
+        \left.
+        \hspace{-0.25cm}
+        \begin{tabular}{l}
+        #1
+        \\#2
+        \\#3
+        \\#4
+        \\#5
+        \end{tabular}\right\rbrace
+    } \textrm{bis}\\
+    \vspace{0.2cm}
+    
+    % The spaces are NECESSARY DON'T ERASE THEM
+}
+
+%% HEADER MANAGEMENT %%
+%% Using an optional argument other than c in \header allow a horizontal spanning of categories instead of a square one
+
+\newcommand{\header}[2][c]{
+    \ifthenelse{\equal{#1}{c}}{
+        \begin{minipage}[t]{.77\textwidth}
+            \kern0pt
+            #2
+        \end{minipage}
+        \hfill
+        \hspace{0.5cm}
+        \begin{minipage}[t]{.2\textwidth}
+            \kern0pt
+            \insertCategories{#1}
+        \end{minipage}
+    }{
+        \ifthenelse{\equal{#1}{v}}{
+            \begin{minipage}[t]{.85\textwidth}
+                \kern0pt
+                #2
+            \end{minipage}
+            \hfill
+            \hspace{0.5cm}
+            \begin{minipage}[t]{.15\textwidth}
+                \kern0pt
+                \insertCategories{#1}
+            \end{minipage}
+        }{
+            \begin{minipage}[t]{.6\textwidth}
+                \kern0pt
+                #2
+            \end{minipage}
+            \hfill
+            \hspace{0.5cm}
+            \begin{minipage}[t]{.4\textwidth}
+                \kern0pt
+                \insertCategories{#1}
+            \end{minipage}
+        }
+    }
+    %\vspace{0.2cm}
+}
+
+\renewcommand{\LettrineTextFont}{}
+
+%% COMMENTARY MANAGEMENT
+
+\newcommand{\insertComment}[2]{
+    \ifthenelse{\equal{#1}{}}{
+        \ifthenelse{\equal{#2}{}}{
+        }{
+            \subsection{#2}
+        }
+    }{
+        \ifthenelse{\equal{#2}{}}{
+            \subsection{#1}
+        }{
+            \subsection{#1\\#2}
+        }
+    }
+}
+
+%% PDF MANAGEMENT
+
+\hypersetup{
+    colorlinks,
+    linkcolor={},
+    citecolor={},
+    urlcolor={}
+}
+
+%% SECTION TITLE MANAGEMENT %%
+
+% renew \section to link to the toc
+
+\let\oldcontentsline\contentsline%
+\renewcommand\contentsline[4]{%
+\hypertarget{toc#4}{}%
+\oldcontentsline{#1}{#2}{#3}{#4}}
+\let\oldsection\section
+\renewcommand\section[1]{%
+    \oldsection[#1]{\protect\hyperlink{toc}{#1}}}
+    
