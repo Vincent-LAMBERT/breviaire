@@ -32,14 +32,21 @@
 \newcommand{\bisdouble}[2]{
     % The spaces are NECESSARY DON'T ERASE THEM
 
-    \ensuremaths{
-        \left.
-        \hspace{-0.25cm}
-        \begin{tabular}{l}
-        #1
-        \\#2
-        \end{tabular}\right\rbrace
-    } \textrm{bis}
+    % \ensuremaths{
+    %     \left.
+    %     \hspace{-0.25cm}
+    %     \begin{tabular}{l}
+    %     #1
+    %     \\#2
+    %     \end{tabular}\right\rbrace
+    % } \textrm{bis}
+
+    $\left.
+    \hspace{-0.25cm}
+    \begin{tabular}{l}
+    #1
+    \\#2
+    \end{tabular}\right\rbrace$ \textrm{bis}
     
     % The spaces are NECESSARY DON'T ERASE THEM
 }
@@ -47,14 +54,22 @@
 \newcommand{\bisdoublespace}[2]{
     % The spaces are NECESSARY DON'T ERASE THEM
 
-    \ensuremaths{
-        \left.
-        \hspace{-0.25cm}
-        \begin{tabular}{l}
-        #1
-        \\#2
-        \end{tabular}\right\rbrace
-    } \textrm{bis}\\
+    % \ensuremaths{
+    %     \left.
+    %     \hspace{-0.25cm}
+    %     \begin{tabular}{l}
+    %     #1
+    %     \\#2
+    %     \end{tabular}\right\rbrace
+    % } \textrm{bis}\\
+    % \vspace{0.2cm}
+
+    $\left.
+    \hspace{-0.25cm}
+    \begin{tabular}{l}
+    #1
+    \\#2
+    \end{tabular}\right\rbrace$ \textrm{bis}\\
     \vspace{0.2cm}
     
     % The spaces are NECESSARY DON'T ERASE THEM
@@ -62,8 +77,8 @@
 
 \newcommand{\bistriple}[3]{
     % The spaces are NECESSARY DON'T ERASE THEM
-
-    \ensuremaths{
+    
+    $
         \left.
         \hspace{-0.25cm}
         \begin{tabular}{l}
@@ -71,7 +86,7 @@
         \\#2
         \\#3
         \end{tabular}\right\rbrace
-    } \textrm{bis}
+    $ \textrm{bis}
     
     % The spaces are NECESSARY DON'T ERASE THEM
 }
@@ -79,7 +94,7 @@
 \newcommand{\bistriplespace}[3]{
     % The spaces are NECESSARY DON'T ERASE THEM
 
-    \ensuremaths{
+    $
         \left.
         \hspace{-0.25cm}
         \begin{tabular}{l}
@@ -87,7 +102,7 @@
         \\#2
         \\#3
         \end{tabular}\right\rbrace
-    } \textrm{bis}\\
+    $ \textrm{bis}\\
     \vspace{0.2cm}
     
     % The spaces are NECESSARY DON'T ERASE THEM
@@ -96,7 +111,7 @@
 \newcommand{\bisquadruple}[4]{
     % The spaces are NECESSARY DON'T ERASE THEM
 
-    \ensuremaths{
+    $
         \left.
         \hspace{-0.25cm}
         \begin{tabular}{l}
@@ -105,7 +120,7 @@
         \\#3
         \\#4
         \end{tabular}\right\rbrace
-    } \textrm{bis}
+    $ \textrm{bis}
     
     % The spaces are NECESSARY DON'T ERASE THEM
 }
@@ -113,7 +128,7 @@
 \newcommand{\bisquadruplespace}[4]{
     % The spaces are NECESSARY DON'T ERASE THEM
 
-    \ensuremaths{
+    $
         \left.
         \hspace{-0.25cm}
         \begin{tabular}{l}
@@ -122,7 +137,7 @@
         \\#3
         \\#4
         \end{tabular}\right\rbrace
-    } \textrm{bis}\\
+    $ \textrm{bis}\\
     \vspace{0.2cm}
     
     % The spaces are NECESSARY DON'T ERASE THEM
@@ -131,7 +146,7 @@
 \newcommand{\bisquintuple}[5]{
     % The spaces are NECESSARY DON'T ERASE THEM
 
-    \ensuremaths{
+    $
         \left.
         \hspace{-0.25cm}
         \begin{tabular}{l}
@@ -141,7 +156,7 @@
         \\#4
         \\#5
         \end{tabular}\right\rbrace
-    } \textrm{bis}
+    $ \textrm{bis}
     
     % The spaces are NECESSARY DON'T ERASE THEM
 }
@@ -149,7 +164,7 @@
 \newcommand{\bisquintuplespace}[5]{
     % The spaces are NECESSARY DON'T ERASE THEM
 
-    \ensuremaths{
+    $
         \left.
         \hspace{-0.25cm}
         \begin{tabular}{l}
@@ -159,7 +174,7 @@
         \\#4
         \\#5
         \end{tabular}\right\rbrace
-    } \textrm{bis}\\
+    $ \textrm{bis}\\
     \vspace{0.2cm}
     
     % The spaces are NECESSARY DON'T ERASE THEM
@@ -229,22 +244,43 @@
 
 %% PDF MANAGEMENT
 
-\hypersetup{
-    colorlinks,
-    linkcolor={},
-    citecolor={},
-    urlcolor={}
-}
+% \hypersetup{
+%     colorlinks,
+%     linkcolor={},
+%     citecolor={},
+%     urlcolor={}
+% }
 
 %% SECTION TITLE MANAGEMENT %%
 
 % renew \section to link to the toc
 
-\let\oldcontentsline\contentsline%
-\renewcommand\contentsline[4]{%
-\hypertarget{toc#4}{}%
-\oldcontentsline{#1}{#2}{#3}{#4}}
-\let\oldsection\section
-\renewcommand\section[1]{%
-    \oldsection[#1]{\protect\hyperlink{toc}{#1}}}
-    
+% \let\oldcontentsline\contentsline%
+% \renewcommand\contentsline[4]{%
+% \hypertarget{toc#4}{}%
+% \oldcontentsline{#1}{#2}{#3}{#4}}
+% \let\oldsection\section
+% \renewcommand\section[1]{%
+%     \oldsection[#1]{\protect\hyperlink{toc}{#1}}}
+
+% \let\oldsection\section
+% \renewcommand{\section}{\protect\hyperlink{toc{\oldsection}}
+
+% \titleformat{\chapter}[display]
+% {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge\hyperlink{toc}}
+% \titleformat{\section}
+% {\normalfont\Large\bfseries}{\thesection}{1em}{\hyperlink{toc}}
+% \titleformat{name=\section, numberless}
+% {\normalfont\Large\bfseries}{}{0em}{\hyperlink{toc}}
+% \titleformat{\subsection}
+% {\normalfont\large\bfseries}{\thesubsection}{1em}{\hyperlink{toc}}
+% \titleformat{\subsubsection}
+% {\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{\hyperlink{toc}}
+
+\newcommand{\headtitle}[1]{
+    \phantomsection
+    % \addcontentsline{toc}{section}{#1} 
+    % {\normalfont\Large\bfseries \protect\hyperlink{toc}{#1}}
+    \section{\protect\hyperlink{toc}{#1}}
+    % \section{#1}
+}

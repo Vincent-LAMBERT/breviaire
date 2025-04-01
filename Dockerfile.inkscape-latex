@@ -1,0 +1,16 @@
+FROM mariadb:latest
+
+# Install Inkscape
+RUN apt-get update -q\
+    && apt-get install -y inkscape \
+    && rm -rf /var/lib/apt/lists/*
+
+FROM mingc/latex:latest 
+# Retrieve mariadb install from the previous image
+COPY --from=0 / /
+
+# ENV PATH="/usr/local/texlive/2024/bin/x86_64-linux:${PATH}"
+
+# ENV HOME /data
+# WORKDIR /data
+# VOLUME ["/data"]

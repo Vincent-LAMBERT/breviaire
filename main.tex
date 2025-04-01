@@ -65,10 +65,10 @@
 \setcounter{tocdepth}{1}
 \dualcol{
     \renewcommand{\baselinestretch}{0.75}\normalsize
-    \let\section\oldsection
-    \pdfbookmark{Contents}{Contents} 
+%     \let\section\oldsection
+%     \pdfbookmark{Contents}{Contents} 
     \vspace*{-1cm}
-    \hypertarget{toc}
+%     \hypertarget{toc}
     \tableofcontents
     \renewcommand{\baselinestretch}{1.0}\normalsize
 }
@@ -166,7 +166,7 @@
 \insertChant{belle-eugenie}{paper}{\regional, \grenoble, \sentimental}
 \insertChant{benjamin}{paper}{\explicite}
 \insertChant{les-betises}{onlineOnly}{\explicite, \crado, \parodie}
-\insertChant{le-bicetre}{paper}{\explicite}
+\insertChant{le-bicetre}{paper}{\explicite, \autre}
 \insertChant{la-biere}{paper}{\aBoire}
 \insertChant{la-biere-brel}{paper}{\aBoire}
 \insertChant{billy-le-bordelais}{paper}{\aBoire, \grivois}
@@ -272,7 +272,7 @@
 \insertChant{medecine-grenoble}{onlineOnly}{\etudiant, \grenoble}
 \insertChant{mener-la-vache-au-taureau}{paper}{\autre}
 \insertChant{la-mere-a-papa}{onlineOnly}{\grivois}
-\insertChant{les-moines-de-saint-bernardin}{paper}{\explicite}
+\insertChant{les-moines-de-saint-bernardin}{paper}{\explicite, \autre}
 \insertChant{mon-ancetre-gurdil}{paper}{\autre, \aBoire}
 \insertChant{le-musee-d-athenes}{paper}{\parodie, \explicite}
 \insertChant{nissa-la-bella}{paper}{\regional}
@@ -360,9 +360,11 @@
 \sectionfont{\color{black}} 
 
 \breakpage
-\let\section\oldsection
-\pdfbookmark{Contents}{Contents}
-\section*{Sommaire par catégorie} \label{Remerciements}
+% \let\section\oldsection
+% \pdfbookmark{Contents}{Contents}
+% \section*{Sommaire par catégorie} \label{sommaire}
+% \addcontentsline{toc}{section}{Sommaire par catégorie} 
+\section*{Sommaire par catégorie} \label{sommaire}
 \noindent
 \tagged{categories}{
     \phantomsection
@@ -390,16 +392,18 @@
 }
 
 \breakpage
-\let\section\oldsection
-\pdfbookmark{Contents}{Contents}
+% \let\section\oldsection
+% \pdfbookmark{Contents}{Contents}
+% \section*{Remerciements} \label{Remerciements}
+% \addcontentsline{toc}{section}{Remerciements} 
 \section*{Remerciements} \label{Remerciements}
 \noindent
 
 \textbf{Pour le travail repris de la dernière édition du bréviaire}
 
-\\\textit{Dessins:}
+\textit{Dessins:}
 \begin{addmargin}[1em]{2em}% 1em left, 2em right
-\\6Lance, Crocaïne et Playmobite <3{\color{falGrey!60!black}, Sciences Grenoble}
+6Lance, Crocaïne et Playmobite <3{\color{falGrey!60!black}, Sciences Grenoble}
 \\Craziiiii{\color{falGrey!60!black}, Droit Grenoble}
 \\JCVD et Mogwai{\color{falGrey!60!black}, Ingénieur.e.s Grenoble}
 \\Minionidas{\color{falGrey!60!black}, Jaune Grenoble}
@@ -408,38 +412,38 @@
 \\Sonic{\color{falGrey!60!black}, Jaune Valence}\\
 \end{addmargin}
 
-\\\textit{Mise en page et rédaction:}
+\textit{Mise en page et rédaction:}
 \begin{addmargin}[1em]{2em}% 1em left, 2em right
-\\6Lance et Crocaïne{\color{falGrey!60!black}, Sciences Grenoble}\\
+6Lance et Crocaïne{\color{falGrey!60!black}, Sciences Grenoble}\\
 \end{addmargin}
 
 \bigskip
-\\\textbf{Pour le travail effectué sur cette édition}
+\textbf{Pour le travail effectué sur cette édition}
 
-\\\textit{Notation des chants à ajouter/enlever:}
+\textit{Notation des chants à ajouter/enlever:}
 \begin{addmargin}[1em]{2em}% 1em left, 2em right
-\\<3Beer, Lucie, Spatt0une, Calondorf, Panoramix, Morgane, Tiphaine et Gringotts{\color{falGrey!60!black}, Ingénieur.e.s Grenoble}
+<3Beer, Lucie, Spatt0une, Calondorf, Panoramix, Morgane, Tiphaine et Gringotts{\color{falGrey!60!black}, Ingénieur.e.s Grenoble}
 \\Sirius3{\color{falGrey!60!black}, Jaune Grenoble}
 \\Hector{\color{falGrey!60!black}, Sciences Grenoble}
 \\Louis{\color{falGrey!60!black}, impétrant Sciences Cler-noble}
 \\RiGHor MortiX{\color{falGrey!60!black}, Rose Grenoble}\\
 \end{addmargin}
 
-\\\textit{Partitions et investissement général:}
+\textit{Partitions et investissement général:}
 \begin{addmargin}[1em]{2em}% 1em left, 2em right
-\\Lucie{\color{falGrey!60!black}, Ingénieure Grenoble}\\
+Lucie{\color{falGrey!60!black}, Ingénieure Grenoble}\\
 \end{addmargin}
 
-\\\textit{Recherches sur les chants et investissement général:}
+\textit{Recherches sur les chants et investissement général:}
 \begin{addmargin}[1em]{2em}% 1em left, 2em right
-\\<3Beer{\color{falGrey!60!black}, Ingénieur Grenoble}\\
+<3Beer{\color{falGrey!60!black}, Ingénieur Grenoble}\\
 \end{addmargin}
 
-\\\textit{Mise en page}
+\textit{Mise en page}
 \begin{addmargin}[1em]{2em}% 1em left, 2em right
-\\Spatt0une{\color{falGrey!60!black}, Ingénieur Grenoble}\\
+Spatt0une{\color{falGrey!60!black}, Ingénieur Grenoble}\\
 \end{addmargin}
 
-\\\\\textbf{Un grand merci à Xavier Hubaut, Professeur émérite du Département de Mathématique (Université Libre de Bruxelles), pour le travail d'archives et de recherches effectué et dont nous tenons une certaine part des commentaires de ce bréviaire.}
+\textbf{Un grand merci à Xavier Hubaut, Professeur émérite du Département de Mathématique (Université Libre de Bruxelles), pour le travail d'archives et de recherches effectué et dont nous tenons une certaine part des commentaires de ce bréviaire.}
 
 \end{document}
